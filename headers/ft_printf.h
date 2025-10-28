@@ -39,6 +39,7 @@ typedef struct s_format
 	int				precision;
 	int				zero_padding;
 	int				width;
+	int				space;
 	t_conversion	conversion;
 }t_format;
 

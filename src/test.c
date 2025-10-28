@@ -2,5 +2,5 @@
 #include <stdio.h>
 int main()
 {
-	printf("%-8.2d", 42);
+	printf("helloe%+++k hi", 42);
 }
