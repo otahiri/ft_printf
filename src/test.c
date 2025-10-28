@@ -1,6 +1,9 @@
 
-#include <stdio.h>
+#include <bsd/string.h>
+#include "../libft/libft.h"
 int main()
 {
-	printf("helloe%+++k hi", 42);
+	strlcat(NULL, "helllo", 0);
+	ft_strlcat(NULL, "helllo", 0);
+	
 }

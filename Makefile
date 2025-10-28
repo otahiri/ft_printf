@@ -1,28 +1,36 @@
-all = $(NAME)
+all: $(NAME)
 
-CC = cc
-
-NAME = libftprintf
+NAME = libftprintf.a
 
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = scr/*
+SRC:= $(wildcard src/*.c)
 
-OBJ = %.c:%.o
+OBJ:= $(SRC:%.c=%.o)
 
-HEADER = headers/*
+HEADERS:= headers/ft_printf.h
 
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+LIBFT_SRC:= src/ft_printf.c
 
-$(NAME): $(OBJ)
-	ar rcs $@ $<
+LIBFT_OBJ = $(LIBFT_SRC:%.c=%.o)
+
+LIBFT = libft/libft.a
+
+%.o: %.c $(HEADERS)
+	cc $(CFLAGS) -c $< -o $@
+
+$(LIBFT):
+	make -C ./libft all
+
+$(NAME): $(OBJ) $(LIBFT)
+	ar rcs $(NAME) $(OBJ)
 
 clean:
-	rm -f $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME)
 
-re: re $(NAME)
+re: fclean all
 
+.PHONY: $(NAME) $(LIBFT) re clean fclean all
