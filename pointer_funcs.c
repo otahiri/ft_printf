@@ -10,12 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include <stdint.h>
 
 char	*pointer_convert(va_list *ap)
 {
 	uintptr_t	ptr;
-	char	*res;
+	char		*res;
+	char		*tmp;
 
-
+	tmp = convert_base(va_arg(*ap, long), "0123456789ABCDEF");
+	res = ft_strjoin("0x", tmp);
+	free(tmp);
+	return (res);
 }

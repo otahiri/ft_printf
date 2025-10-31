@@ -3,6 +3,6 @@
 
 int	main(void)
 {
-	char	*str = "haldksjlkajdlkajsdlksahello";
-	printf("hello %pworld", str);
+	char	*str = "mine";
+	ft_printf("hello %s %cworld", str, *str);
 }

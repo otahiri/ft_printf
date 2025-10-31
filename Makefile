@@ -4,7 +4,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
-SRC = ft_printf.c
+SRC = ft_printf.c string_funcs.c char_funcs.c
 
 OBJ:= $(SRC:%.c=%.o)
 

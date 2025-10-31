@@ -11,12 +11,35 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
+void	switch_base(char *base, long num, int num_len, char *res)
+{
+	int	i;
+	int	div;
+	int	base_count;
+
+	base_count = ft_strlen(base);
+	div = 1;
+	while (num_len > 1)
+	{
+		div *= base_count;
+		num_len--;
+	}
+	i = 0;
+	while (div > 0)
+	{
+		res[i] = base[(num / div)];
+		num %= div;
+		div /= base_count;
+		i++;
+	}
+}
+
 int	num_lenght(long num)
 {
 	int	count;
 
 	count = 0;
-	while (num > 0)
+	while (num > 9)
 	{
 		num /= 10;
 		count++;
@@ -28,10 +51,12 @@ char	*convert_base(long num, char *base)
 {
 	int		base_count;
 	char	*res;
+	int		num_len;
 
-	res = ft_calloc(num_lenght(num) + 1, sizeof(char));
+	num_len = num_lenght(num);
+	res = ft_calloc(num_len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	base_count = ft_strlen(base);
-	res = 
+	switch_base(base, num, num_len, res);
+	return (res);
 }

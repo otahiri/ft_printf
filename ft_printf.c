@@ -12,6 +12,7 @@
 #include "ft_printf.h"
 #include "libft/libft.h"
 #include <__stdarg_va_list.h>
+#include <stdlib.h>
 
 int	is_specifier(char c)
 {
@@ -33,13 +34,33 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 {
 	t_format	*format;
 	char		*res;
-	char		*(*func_arr)(va_list *ap);
+	char		*(*func_arr[9])(va_list *ap);
+	int			len;
 
+	format = ft_calloc(1, sizeof(t_format));
 	ft_bzero(format, sizeof(t_format));
-
 	format->specifier = is_specifier(con_spec[ft_strlen(con_spec) - 1]);
+	func_arr[0] = &char_to_str;
+	func_arr[1] = &string_maker;
+	res = func_arr[format->specifier](ap);
+	len = ft_strlen(res);
+	ft_putstr_fd(res, 1);
+	free(res);
+	return (len);
+}
 
-	return (0);
+int	set_flags_string(int *res, char *conv_spec, char const *str, va_list *ap)
+{
+	int	len;
+
+	len = 0;
+	while (str[len] && is_specifier(str[len]) < 0)
+		len++;
+	conv_spec = ft_substr(str, 0, len + 1);
+	if (!conv_spec)
+		return (0);
+	res += parse_conver_specifier(conv_spec, ap);
+	return (ft_strlen(conv_spec) + 1);
 }
 
 int	ft_printf(const char	*str, ...)
@@ -48,26 +69,18 @@ int	ft_printf(const char	*str, ...)
 	va_list	ap;
 	char	*conv_specifier;
 	int		res;
-	int		len;
 
 	i = 0;
+	va_start(ap, str);
 	res = 0;
 	while (str[i])
 	{
 		if (str[i] == '%')
-		{
-			while (is_specifier(str[i]) >= 0)
-				len++;
-			conv_specifier = ft_substr(str, i, i + len);
-			if (!conv_specifier)
-				return (0);
-			i += ft_strlen(conv_specifier);
-			res += parse_conver_specifier(conv_specifier, &ap);
-		}
+			i += set_flags_string(&res, conv_specifier, str + i, &ap);
 		write(1, &str[i], 1);
 		res++;
 		i++;
 	}
-	write(1, "\n", 1);
+	va_end(ap);
 	return (res);
 }
