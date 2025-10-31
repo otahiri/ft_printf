@@ -4,5 +4,5 @@
 int	main(void)
 {
 	char	*str = "mine";
-	ft_printf("hello %s %cworld", str, *str);
+	ft_printf("hello %p %cworld", str, *str);
 }

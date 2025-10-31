@@ -10,9 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include "libft/libft.h"
-#include <__stdarg_va_list.h>
-#include <stdlib.h>
 
 int	is_specifier(char c)
 {
@@ -42,6 +39,7 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 	format->specifier = is_specifier(con_spec[ft_strlen(con_spec) - 1]);
 	func_arr[0] = &char_to_str;
 	func_arr[1] = &string_maker;
+	func_arr[2] = &pointer_convert;
 	res = func_arr[format->specifier](ap);
 	len = ft_strlen(res);
 	ft_putstr_fd(res, 1);
@@ -49,25 +47,25 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 	return (len);
 }
 
-int	set_flags_string(int *res, char *conv_spec, char const *str, va_list *ap)
+int	set_flags_string(int *res, char const *str, va_list *ap)
 {
-	int	len;
+	int		len;
+	char	*conv_spec;
 
-	len = 0;
+	len = 1;
 	while (str[len] && is_specifier(str[len]) < 0)
 		len++;
 	conv_spec = ft_substr(str, 0, len + 1);
 	if (!conv_spec)
 		return (0);
 	res += parse_conver_specifier(conv_spec, ap);
-	return (ft_strlen(conv_spec) + 1);
+	return (ft_strlen(conv_spec));
 }
 
 int	ft_printf(const char	*str, ...)
 {
 	int		i;
 	va_list	ap;
-	char	*conv_specifier;
 	int		res;
 
 	i = 0;
@@ -76,7 +74,7 @@ int	ft_printf(const char	*str, ...)
 	while (str[i])
 	{
 		if (str[i] == '%')
-			i += set_flags_string(&res, conv_specifier, str + i, &ap);
+			i += set_flags_string(&res, str + i, &ap);
 		write(1, &str[i], 1);
 		res++;
 		i++;

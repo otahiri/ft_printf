@@ -49,7 +49,6 @@ int	num_lenght(long num)
 
 char	*convert_base(long num, char *base)
 {
-	int		base_count;
 	char	*res;
 	int		num_len;
 

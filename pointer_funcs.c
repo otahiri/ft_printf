@@ -17,7 +17,8 @@ char	*pointer_convert(va_list *ap)
 	char		*res;
 	char		*tmp;
 
-	tmp = convert_base(va_arg(*ap, long), "0123456789ABCDEF");
+	ptr = va_arg(*ap, long);
+	tmp = convert_base(ptr, "0123456789abcdef");
 	res = ft_strjoin("0x", tmp);
 	free(tmp);
 	return (res);

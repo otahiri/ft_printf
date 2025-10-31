@@ -40,5 +40,6 @@ int		ft_printf(const char	*str, ...);
 char	*string_maker(va_list *ap);
 char	*char_to_str(va_list *ap);
 char	*convert_base(long num, char *base);
+char	*pointer_convert(va_list *ap);
 
 #endif
