@@ -6,7 +6,7 @@
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 11:30:55 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/01 12:07:13 by otahiri-         ###   ########.fr       */
+/*   Updated: 2025/11/01 12:59:12 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -32,7 +32,7 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 	t_format		*format;
 	char			*res;
 	static char		*(*func_arr[9])(va_list *ap) = {char_to_str, string_maker,
-		pointer_convert};
+		pointer_convert, from_decimal_to_str, from_int_to_str};
 	int				len;
 
 	format = ft_calloc(1, sizeof(t_format));

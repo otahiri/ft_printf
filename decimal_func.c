@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-char	*from_decimal_to_str(va_list ap)
+char	*from_decimal_to_str(va_list *ap)
 {
 	int		num;
 	char	*res;
 
-	num = va_arg(ap, int);
+	num = va_arg(*ap, int);
 	res = ft_itoa(num);
 	return (res);
 }

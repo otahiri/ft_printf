@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_funcs.c                                        :+:      :+:    :+:   */
+/*   from_uint_to_str.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 12:03:00 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/01 12:07:11 by otahiri-         ###   ########.fr       */
+/*   Created: 2025/11/01 12:57:01 by otahiri-          #+#    #+#             */
+/*   Updated: 2025/11/01 12:59:10 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include "libft/libft.h"
 
-char	*from_int_to_str(va_list *ap)
+char	*from_uint_to_str(va_list *ap)
 {
-	int		num;
-	char	*res;
+	unsigned int	num;
+	char		*res;
 
-	num = va_arg(*ap, int);
-	res = ft_itoa(num);
-	return (res);
+	num = va_arg(*ap, unsigned int);
+	res = ft_itoa(int n)
 }

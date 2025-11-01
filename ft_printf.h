@@ -40,6 +40,7 @@ char	*string_maker(va_list *ap);
 char	*char_to_str(va_list *ap);
 char	*convert_base(unsigned long num, char *base);
 char	*pointer_convert(va_list *ap);
-char	*from_decimal_to_str(va_list ap);
+char	*from_decimal_to_str(va_list *ap);
+char	*from_int_to_str(va_list *ap);
 
 #endif
