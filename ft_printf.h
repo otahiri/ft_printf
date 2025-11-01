@@ -6,7 +6,7 @@
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 11:34:37 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/10/30 16:03:28 by otahiri-         ###   ########.fr       */
+/*   Updated: 2025/11/01 11:59:22 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdint.h>
 # include <limits.h>
 # include <unistd.h>
 # include "./libft/libft.h"
@@ -39,7 +38,8 @@ typedef struct s_format
 int		ft_printf(const char	*str, ...);
 char	*string_maker(va_list *ap);
 char	*char_to_str(va_list *ap);
-char	*convert_base(long num, char *base);
+char	*convert_base(unsigned long num, char *base);
 char	*pointer_convert(va_list *ap);
+char	*from_decimal_to_str(va_list ap);
 
 #endif
