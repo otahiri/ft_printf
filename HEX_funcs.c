@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   from_uint_to_str.c                                 :+:      :+:    :+:   */
+/*   HEX_funcs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/01 12:57:01 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/01 12:59:10 by otahiri-         ###   ########.fr       */
+/*   Created: 2025/11/01 14:38:57 by otahiri-          #+#    #+#             */
+/*   Updated: 2025/11/01 15:00:15 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-char	*from_uint_to_str(va_list *ap)
+char	*from_int_to_bhex(va_list *ap)
 {
 	unsigned int	num;
-	char		*res;
+	char			*res;
 
 	num = va_arg(*ap, unsigned int);
-	res = ft_itoa(int n)
+	res = convert_base((unsigned long)num, "0123456789ABCDEF");
+	return (res);
 }

@@ -3,4 +3,5 @@
 
 int main(void) {
     void *ptr = (void*)0x7FFFFFFFFFFFFFFF;
-    ft_printf("%p\n", ptr);  // prints 0x7fffffffffffffff return 0; }
+    ft_printf("%%\n", 4294967295);
+}

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	switch_base(char *base, unsigned long num, int num_len, char *res)
+void	switch_base(char *base, unsigned long num, char *res)
 {
 	int		i;
 	int		j;
@@ -59,6 +59,6 @@ char	*convert_base(unsigned long num, char *base)
 	res = ft_calloc(num_len + 1, sizeof(char));
 	if (!res)
 		return (NULL);
-	switch_base(base, num, num_len, res);
+	switch_base(base, num, res);
 	return (res);
 }

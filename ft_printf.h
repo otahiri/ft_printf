@@ -6,7 +6,7 @@
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 11:34:37 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/01 11:59:22 by otahiri-         ###   ########.fr       */
+/*   Updated: 2025/11/01 14:52:09 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,8 @@ char	*convert_base(unsigned long num, char *base);
 char	*pointer_convert(va_list *ap);
 char	*from_decimal_to_str(va_list *ap);
 char	*from_int_to_str(va_list *ap);
+char	*from_uint_to_str(va_list *ap);
+char	*from_int_to_hex(va_list *ap);
+char	*from_int_to_bhex(va_list *ap);
 
 #endif
