@@ -3,5 +3,5 @@
 
 int main(void) {
     void *ptr = (void*)0x7FFFFFFFFFFFFFFF;
-    ft_printf("%%\n", 4294967295);
+    ft_printf("%w\n", 4294967295);
 }

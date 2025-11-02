@@ -6,7 +6,7 @@
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 11:30:55 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/01 15:06:19 by otahiri-         ###   ########.fr       */
+/*   Updated: 2025/11/02 12:00:43 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -57,6 +57,8 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 		free(format);
 		return (-1);
 	}
+	if (ft_strlen(con_spec) > 2)
+		res = set_bonus(format, res, ap, con_spec);
 	ft_putstr_fd(res, 1);
 	free(format);
 	free(res);
@@ -81,6 +83,7 @@ int	set_flags_string(int *res, char const *str, va_list *ap)
 	if (tmp < 0)
 		return (-1);
 	res += tmp;
+	free(conv_spec);
 	return (ft_strlen(conv_spec));
 }
 
