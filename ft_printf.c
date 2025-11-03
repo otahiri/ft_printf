@@ -6,7 +6,7 @@
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 11:30:55 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/02 12:00:43 by otahiri-         ###   ########.fr       */
+/*   Updated: 2025/11/03 11:04:23 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -40,6 +40,7 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 {
 	t_format		*format;
 	char			*res;
+	int				ret;
 	static char		*(*func_arr[9])(va_list *ap) = {char_to_str, string_maker,
 		pointer_convert, from_decimal_to_str, from_int_to_str,
 		from_uint_to_str, from_int_to_hex, from_int_to_bhex};
@@ -57,12 +58,11 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 		free(format);
 		return (-1);
 	}
-	if (ft_strlen(con_spec) > 2)
-		res = set_bonus(format, res, ap, con_spec);
 	ft_putstr_fd(res, 1);
+	ret = ft_strlen(res);
 	free(format);
 	free(res);
-	return (ft_strlen(res));
+	return (ret);
 }
 
 int	set_flags_string(int *res, char const *str, va_list *ap)
@@ -70,6 +70,7 @@ int	set_flags_string(int *res, char const *str, va_list *ap)
 	int		len;
 	char	*conv_spec;
 	int		tmp;
+	int		ret;
 
 	len = 1;
 	while (str[len] && !ft_isalpha(str[len]) && str[len] != '%')
@@ -82,9 +83,10 @@ int	set_flags_string(int *res, char const *str, va_list *ap)
 	tmp = parse_conver_specifier(conv_spec, ap);
 	if (tmp < 0)
 		return (-1);
-	res += tmp;
+	*res += tmp;
+	ret = ft_strlen(conv_spec);
 	free(conv_spec);
-	return (ft_strlen(conv_spec));
+	return (ret);
 }
 
 int	ft_printf(const char	*str, ...)
@@ -105,7 +107,9 @@ int	ft_printf(const char	*str, ...)
 		if (tmp < 0)
 			return (-1);
 		i += tmp;
-		write(1, &str[i], 1);
+		if (!str[i])
+			break ;
+		ft_putchar_fd(str[i], 1);
 		res++;
 		i++;
 	}

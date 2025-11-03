@@ -53,8 +53,5 @@ char		*from_int_to_str(va_list *ap);
 char		*from_uint_to_str(va_list *ap);
 char		*from_int_to_hex(va_list *ap);
 char		*from_int_to_bhex(va_list *ap);
-t_format	*set_flags(t_format *format, char *conv_spec, va_list *ap);
-char		*set_bonus(t_format *format, char *res, \
-		va_list *ap, char *con_spec);
 
 #endif

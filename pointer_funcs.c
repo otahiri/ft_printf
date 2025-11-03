@@ -18,6 +18,8 @@ char	*pointer_convert(va_list *ap)
 	char			*tmp;
 
 	ptr = va_arg(*ap, unsigned long);
+	if (!ptr)
+		return (ft_strdup("(nil)"));
 	tmp = convert_base(ptr, "0123456789abcdef");
 	res = ft_strjoin("0x", tmp);
 	free(tmp);
