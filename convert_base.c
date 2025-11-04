@@ -55,6 +55,12 @@ char	*convert_base(unsigned long num, char *base)
 	char	*res;
 	int		num_len;
 
+	if (num == 0)
+	{
+		res = ft_calloc(2, sizeof(char));
+		res[0] = '0';
+		return (res);
+	}
 	num_len = num_lenght(num, ft_strlen(base));
 	res = ft_calloc(num_len + 2, sizeof(char));
 	if (!res)
