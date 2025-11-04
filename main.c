@@ -1,21 +1,133 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/03 09:43:14 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/11/03 09:47:44 by otahiri-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "ft_printf.h"
+#include <limits.h>
 #include <stdio.h>
+int main()
+{
+	int a;
+	int b;
 
-int main(void) {
-	ft_printf("%u\n", 0);
-	ft_printf("%u\n", -1);
-	ft_printf("%u\n", 2147483647);
-	ft_printf("%u\n", -2147483648);
+	a = ft_printf(" %x ", 0);
+	b = printf(" %x ", 0);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", -1);
+	b = printf(" %x ", -1);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 1);
+	b = printf(" %x ", 1);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 9);
+	b = printf(" %x ", 9);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 10);
+	b = printf(" %x ", 10);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 11);
+	b = printf(" %x ", 11);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 15);
+	b = printf(" %x ", 15);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 16);
+	b = printf(" %x ", 16);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 17);
+	b = printf(" %x ", 17);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n",a,b, a==b);
+	a = ft_printf(" %x ", 99);
+	b =  printf(" %x ", 99);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", 100);
+	b =  printf(" %x ", 100);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", 101);
+	b =  printf(" %x ", 101);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -9);
+	b =  printf(" %x ", -9);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -10);
+	b =  printf(" %x ", -10);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -11);
+	b =  printf(" %x ", -11);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -14);
+	b =  printf(" %x ", -14);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -15);
+	b =  printf(" %x ", -15);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -16);
+	b =  printf(" %x ", -16);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -99);
+	b =  printf(" %x ", -99);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -100);
+	b =  printf(" %x ", -100);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -101);
+	b =  printf(" %x ", -101);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", INT_MAX);
+	b =  printf(" %x ", INT_MAX);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", INT_MIN);
+	b =  printf(" %x ", INT_MIN);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", LONG_MAX);
+	b =  printf(" %x ", LONG_MAX);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", LONG_MIN);
+	b =  printf(" %x ", LONG_MIN);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", UINT_MAX);
+	b =  printf(" %x ", UINT_MAX);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", ULONG_MAX);
+	b =  printf(" %x ", ULONG_MAX);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", 9223372036854775807LL);
+	b =  printf(" %x ", 9223372036854775807LL);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	b =  printf(" %x %x %x %x %x %x %x", INT_MAX, INT_MIN, LONG_MAX, LONG_MIN, ULONG_MAX, 0, -42);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", 42);
+	b =  printf(" %x ", 42);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
+	a = ft_printf(" %x ", -42);
+	b =  printf(" %x ", -42);
+	printf("\n");
+	printf("%d is theirs %d is mine %d is the result\n", a, b, a == b);
 }

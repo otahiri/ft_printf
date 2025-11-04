@@ -56,7 +56,7 @@ char	*convert_base(unsigned long num, char *base)
 	int		num_len;
 
 	num_len = num_lenght(num, ft_strlen(base));
-	res = ft_calloc(num_len + 1, sizeof(char));
+	res = ft_calloc(num_len + 2, sizeof(char));
 	if (!res)
 		return (NULL);
 	switch_base(base, num, res);

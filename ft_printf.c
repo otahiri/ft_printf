@@ -10,12 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include "libft/libft.h"
 
-static int	print_percent(char *spec)
+static int	print_percent(char *spec, t_format *format)
 {
 	if (spec[1] != '%')
+	{
+		free(format);
+		free(spec);
 		return (-1);
+	}
+	free(format);
 	ft_putchar_fd('%', 1);
 	return (1);
 }
@@ -48,10 +52,9 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 	format = ft_calloc(1, sizeof(t_format));
 	if (!format)
 		return (-1);
-	ft_bzero(format, sizeof(t_format));
 	format->specifier = is_specifier(con_spec[ft_strlen(con_spec) - 1]);
 	if (format->specifier == 8)
-		return (print_percent(con_spec));
+		return (print_percent(con_spec, format));
 	res = func_arr[format->specifier](ap);
 	if (!res)
 	{
@@ -59,7 +62,7 @@ int	parse_conver_specifier(char *con_spec, va_list *ap)
 		return (-1);
 	}
 	ft_putstr_fd(res, 1);
-	ret = ft_strlen(res);
+	ret = ft_strlen(res) + (format->specifier == 0 && res[0] == '\0');
 	free(format);
 	free(res);
 	return (ret);
@@ -79,7 +82,10 @@ int	set_flags_string(int *res, char const *str, va_list *ap)
 	if (!conv_spec)
 		return (0);
 	if (is_specifier(str[len]) < 0)
+	{
+		free(conv_spec);
 		return (-1);
+	}
 	tmp = parse_conver_specifier(conv_spec, ap);
 	if (tmp < 0)
 		return (-1);
@@ -96,12 +102,14 @@ int	ft_printf(const char	*str, ...)
 	int		res;
 	int		tmp;
 
+	if (!str)
+		return (-1);
 	i = 0;
-	tmp = 0;
 	va_start(ap, str);
 	res = 0;
 	while (str[i])
 	{
+		tmp = 0;
 		if (str[i] == '%')
 			tmp = set_flags_string(&res, str + i, &ap);
 		if (tmp < 0)
@@ -109,9 +117,8 @@ int	ft_printf(const char	*str, ...)
 		i += tmp;
 		if (!str[i])
 			break ;
-		ft_putchar_fd(str[i], 1);
-		res++;
-		i++;
+		if (tmp == 0)
+			res += write(1, &str[i++], 1);
 	}
 	va_end(ap);
 	return (res);
