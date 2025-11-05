@@ -58,6 +58,8 @@ char	*convert_base(unsigned long num, char *base)
 	if (num == 0)
 	{
 		res = ft_calloc(2, sizeof(char));
+		if (!res)
+			return (NULL);
 		res[0] = '0';
 		return (res);
 	}
