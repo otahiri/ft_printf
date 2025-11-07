@@ -43,15 +43,16 @@ typedef struct s_format
 	int			width;
 }t_format;
 
-int			ft_printf(const char	*str, ...);
-char		*string_maker(va_list *ap);
-char		*char_to_str(va_list *ap);
-char		*convert_base(unsigned long num, char *base);
-char		*pointer_convert(va_list *ap);
-char		*from_decimal_to_str(va_list *ap);
-char		*from_int_to_str(va_list *ap);
-char		*from_uint_to_str(va_list *ap);
-char		*from_int_to_hex(va_list *ap);
-char		*from_int_to_bhex(va_list *ap);
+int		ft_printf(const char	*str, ...);
+int		print_char(va_list *ap);
+int		print_uint(va_list *ap);
+int		print_int(va_list *ap);
+int		print_decimal(va_list *ap);
+int		print_pointer(va_list *ap);
+int		print_hex(va_list *ap);
+int		print_big_hex(va_list *ap);
+int		print_str(va_list *ap);
+char	*convert_base(unsigned long num, char *base);
+char	*ft_uitoa(unsigned int n);
 
 #endif

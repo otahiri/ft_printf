@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert_base1.c                                    :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: otahiri- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/30 15:38:33 by otahiri-          #+#    #+#             */
-/*   Updated: 2025/10/30 16:02:07 by otahiri-         ###   ########.fr       */
+/*   Created: 2025/11/06 10:10:50 by otahiri-          #+#    #+#             */
+/*   Updated: 2025/11/06 10:11:02 by otahiri-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-void	switch_base(char *base, unsigned long num, char *res)
+static void	switch_base(char *base, unsigned long num, char *res)
 {
 	int		i;
 	int		j;
@@ -37,7 +37,7 @@ void	switch_base(char *base, unsigned long num, char *res)
 	}
 }
 
-int	num_lenght(unsigned long num, int base_len)
+static int	num_lenght(unsigned long num, int base_len)
 {
 	int	count;
 

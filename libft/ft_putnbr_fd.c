@@ -44,9 +44,7 @@ void	ft_putnbr_fd(int n, int fd)
 	size_t	i;
 	char	num[32];
 	long	tmp_num;
-	size_t	idx;
 
-	idx = 0;
 	i = 0;
 	tmp_num = n;
 	if (tmp_num < 0)

@@ -4,14 +4,13 @@ CFLAGS = -Wall -Werror -Wextra
 
 NAME = libftprintf.a
 
-SRC = char_funcs.c convert_base.c decimal_func.c ft_printf.c hex_funcs.c HEX_funcs.c \
-			int_funcs.c pointer_funcs.c string_funcs.c uint_funcs.c
+SRC = ft_convert_base.c ft_printf.c ft_printf_utils2.c ft_printf_utils.c ft_uitoa.c
 
 OBJ:= $(SRC:%.c=%.o)
 
 LIBFT = libft.a
 
-HEADER = libftprintf.h
+HEADER = ft_printf.h
 
 all: $(NAME)
 
@@ -28,6 +27,7 @@ clean:
 	rm -rf *.o
 
 fclean: clean
+	make -C ./libft fclean
 	rm -rf $(NAME)
 
 re: fclean $(NAME)
